@@ -1,6 +1,7 @@
 package single
 
 import (
+	"os"
 	"fmt"
 	"path/filepath"
 )
@@ -10,5 +11,5 @@ func (s *Single) Filename() string {
 	if len(Lockfile) > 0 {
 		return Lockfile
 	}
-	return filepath.Join("/var/lock", fmt.Sprintf("%s.lock", s.name))
+	return filepath.Join(os.TempDir(), fmt.Sprintf("%s.lock", s.name))
 }
